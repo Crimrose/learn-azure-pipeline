@@ -1,0 +1,19 @@
+name: AzurePipelines-HelloWorld
+
+trigger: [ main ]
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- pwsh: Write-Host "Hello from Azure Pipelines!"
+  displayName: Say hello
+
+- bash: ls -la $(System.DefaultWorkingDirectory)/.github/workflows
+  displayName: Inspect GitHub workflows folder
+
+- task: UseDotNet@2
+  displayName: Use .NET Core
+  inputs:
+    version: 3.1.x
